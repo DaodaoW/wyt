@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { DivS, DivK, DivC } from './styled';
+import { DivS, DivK, DivC } from './styled.ts';
+import { DefaultState } from './props';
 import one from '../../assets/imageShow/1.jpg';
 import two from '../../assets/imageShow/2.jpg';
 import three from '../../assets/imageShow/3.jpg';
@@ -34,16 +35,16 @@ const imgArray = [
   },
 ];
 
-class ImageShow extends Component{
+class ImageShow extends Component<{}, DefaultState>{
   constructor(props) {
     super(props);
     this.state = {
       firstAngleArray: [0, 0, 0, 0, 0, 0],
-      nextAngleArray: [0, 0, 0, 0, 0, 0],
+      nextAngleArray: this.getRandom(6, 90),
       firstPlaceLeftArray: [0, 0, 0, 0, 0, 0],
-      nextPlaceLeftArray: [0, 0, 0, 0, 0, 0],
+      nextPlaceLeftArray: this.getRandom(6, 40),
       firstPlaceTopArray: [0, 0, 0, 0, 0, 0],
-      nextPlaceTopArray: [0, 0, 0, 0, 0, 0],
+      nextPlaceTopArray: this.getRandom(6, 30),
       itemNum: -1,
       front: false,
       chooseImg: {
@@ -58,14 +59,6 @@ class ImageShow extends Component{
   }
 
   componentDidMount() {
-    const nextAngleArray = this.getRandom(6, 90);
-    const nextPlaceLeftArray = this.getRandom(6, 40);
-    const nextPlaceTopArray = this.getRandom(6, 30);
-    this.setState({
-      nextAngleArray,
-      nextPlaceLeftArray,
-      nextPlaceTopArray
-    })
   }
 
   change = () => {
@@ -85,10 +78,10 @@ class ImageShow extends Component{
     })
   }
 
-  getRandom = (num, num2) => {
-    let angleArray = []
-    for(let i = 0; i < num; i++){
-      angleArray.push(parseInt(Math.random() * num2, 10))
+  getRandom = (num, num2): Array<number> => {
+    let angleArray: Array<number> = [];
+    for (let i = 0; i < num; i++) {
+      angleArray.push(Math.random() * num2);
     }
     return angleArray;
   }
@@ -135,7 +128,7 @@ class ImageShow extends Component{
     return(
       <div>
         {
-          imgArray.map((item, index) => {
+          imgArray.map((item: any, index: number) => {
             const firstAngle = firstAngleArray[index];
             const nextAngle = nextAngleArray[index];
             const firstTop = firstPlaceTopArray[index];
@@ -155,10 +148,10 @@ class ImageShow extends Component{
                 onClick={() => this.gotoCenter(nextAngle, nextTop, nextLeft, index)}
               >
                 <DivK style={{ transform: itemNum === index && front ? 'rotateY(-180deg)' : '' }}>
-                  <img src={item.img} alt={index} />
+                  <img src={item.img} alt='加载失败' />
                 </DivK>
                 <DivC style={{ transform: itemNum === index && front ? 'rotateY(-360deg)' : '' }}>
-                  <img src={item.img} alt={index} />
+                  <img src={item.img} alt='加载失败' />
                   <div dangerouslySetInnerHTML={{ __html: item.poetry }}></div>
                 </DivC>
               </DivS>

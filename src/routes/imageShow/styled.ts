@@ -1,6 +1,16 @@
 import styled from 'styled-components';
 import { keyframes } from 'styled-components';
 
+interface IDivSProps {
+  zIndex?: number;
+  firstAngle?: number;
+  firstTop?: number;
+  firstLeft?: number;
+  nextAngle?: number;
+  nextTop?: number;
+  nextLeft?: number;
+}
+
 const rotate = (firstAngle, firstTop, firstLeft, nextAngle, nextTop, nextLeft) => {
   return keyframes`
     from { 
@@ -78,9 +88,9 @@ export const DivS = styled.div `
   margin: 0;
   position: absolute;
   perspective: 500;
-  z-index: ${ props => props.zIndex };
+  z-index: ${ (props: IDivSProps) => props.zIndex };
   animation: ${
-    props => rotate(props.firstAngle, props.firstTop, props.firstLeft, props.nextAngle, props.nextTop, props.nextLeft) 
+    (props: IDivSProps) => rotate(props.firstAngle, props.firstTop, props.firstLeft, props.nextAngle, props.nextTop, props.nextLeft) 
   } 0.8s alternate forwards;
 
 `

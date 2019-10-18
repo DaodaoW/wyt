@@ -2,7 +2,7 @@
   "name": "wyt",
   "version": "0.1.0",
   "private": true,
-  "types": "index.d.ts",
+  "types": "typing.d.ts",
   "dependencies": {
     "@babel/core": "7.6.0",
     "@babel/runtime": "^7.6.3",

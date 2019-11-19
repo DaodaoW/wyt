@@ -12,7 +12,7 @@ const imgArray = [
   {
     img: one,
     poetry: '<p>相思<br>唐代：王维<br>红豆生南国，<br>春来发几枝。<br>愿君多采撷，<br>此物最相思。<br></p>'
-  }, 
+  },
   {
     img: two,
     poetry: '<p>相思<br>唐代：王维<br>红豆生南国，<br>春来发几枝。<br>愿君多采撷，<br>此物最相思。<br></p>'
@@ -35,7 +35,7 @@ const imgArray = [
   },
 ];
 
-class ImageShow extends Component<{}, DefaultState>{
+class ImageShow extends Component<{}, DefaultState> {
   constructor(props: DefaultState) {
     super(props);
     this.state = {
@@ -88,15 +88,15 @@ class ImageShow extends Component<{}, DefaultState>{
 
   gotoCenter = (nextAngle: any, nextTop: any, nextLeft: any, index: any): void => {
     const chooseThis = this.state.itemNum;
-    if(chooseThis === index && !this.state.front) {
+    if (chooseThis === index && !this.state.front) {
       this.setState({
         front: true
       })
-    }else if(chooseThis === index && this.state.front) {
+    } else if (chooseThis === index && this.state.front) {
       this.setState({
         front: false
       })
-    }else {
+    } else {
       this.change();
       this.setState({
         itemNum: index,
@@ -113,11 +113,11 @@ class ImageShow extends Component<{}, DefaultState>{
     }
   }
 
-  render(){
-    const { 
-      firstAngleArray, 
-      nextAngleArray, 
-      firstPlaceLeftArray, 
+  render() {
+    const {
+      firstAngleArray,
+      nextAngleArray,
+      firstPlaceLeftArray,
       nextPlaceLeftArray,
       firstPlaceTopArray,
       nextPlaceTopArray,
@@ -138,11 +138,11 @@ class ImageShow extends Component<{}, DefaultState>{
             return (
               <DivS
                 zIndex={ itemNum === index ? 10 : 1 }
-                firstAngle={ itemNum === index ? chooseImg.firstAngle : firstAngle } 
+                firstAngle={ itemNum === index ? chooseImg.firstAngle : firstAngle }
                 nextAngle={ itemNum === index ? chooseImg.nextAngle : nextAngle }
                 firstTop={ itemNum === index ? chooseImg.firstTop : firstTop }
                 nextTop={ itemNum === index ? chooseImg.nextTop : nextTop }
-                firstLeft={ itemNum === index ? chooseImg.firstLeft : firstLeft } 
+                firstLeft={ itemNum === index ? chooseImg.firstLeft : firstLeft }
                 nextLeft={ itemNum === index ? chooseImg.nextLeft : nextLeft }
                 key={index}
                 onClick={() => this.gotoCenter(nextAngle, nextTop, nextLeft, index)}

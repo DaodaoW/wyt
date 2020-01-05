@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { shallow } from 'enzyme';
+// import { shallow } from 'enzyme'; // 浅渲染
 import TestUtils from 'react-dom/test-utils';
 import { CheckBox } from './checkBox';
 
@@ -130,4 +130,9 @@ describe('Component CheckBox test', () => {
                         }
                       });
   */
+
+  /**
+   * 在React中，组件层两测两不测：
+   * 分支渲染逻辑必测、事件、交互调用必测；纯 UI（包括 CSS）不测、@connect 过的高阶组件不测
+   */
 

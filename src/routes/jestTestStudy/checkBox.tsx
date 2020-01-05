@@ -10,7 +10,6 @@ interface CheckBoxState {
 }
 export class CheckBox extends React.Component<CheckBoxProps, CheckBoxState> {
 
-
   state: CheckBoxState  = {
     isChecked: false
   };
